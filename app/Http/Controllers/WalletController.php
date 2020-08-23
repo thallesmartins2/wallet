@@ -29,7 +29,7 @@ class WalletController extends Controller
     public function store(Request $request)
     {
         try {
-            return response()->json(Wallet::putWallet($request).' chegou store', Response::HTTP_OK); 
+            return response()->json(Wallet::putWallet($request), Response::HTTP_OK); 
          } catch (\Exception $ex) {
             return json_encode(['erro' => 'Erro ao salvar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
          }

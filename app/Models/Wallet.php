@@ -21,27 +21,27 @@ class Wallet extends Model
         return 'Chegou na Model Wallet metodo getAll';
     }
 
-    public static function putTransaction($request)
+    public static function putWallet($request)
     {
         return $request->all();
     }
 
-    public static function getTransictionById($id)
+    public static function getWalletById($id)
     {
         return $id;
     }
     
-    public static function editTransactionById($id)
+    public static function editWalletById($id)
     {
         return $id;
     }
 
-    public static function updateTransactionById($request, $id) 
+    public static function updateWalletById($request, $id) 
     {
         return $request->all();
     }
 
-    public static function deleteTransactionById($id) 
+    public static function deleteWalletById($id) 
     {
         return $id;
     }
