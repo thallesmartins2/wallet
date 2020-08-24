@@ -28,7 +28,7 @@ class Wallet extends Model
 
     public static function getWalletById($id)
     {
-        return self::join('user as u', 'u.id','=','wallet.user_id')
+        $wallet = self::join('user as u', 'u.id','=','wallet.user_id')
                     ->join('user_type as ut', 'ut.id','=','u.user_type_id')
                     ->where('u.id',$id)
                     ->select(
@@ -37,23 +37,39 @@ class Wallet extends Model
                         'ut.name as user_type'
                     )
                     ->first();
+
+        if ($wallet) {
+            return $wallet;
+        } else {
+            return ['mensagem' => 'Carteira não encontrada!'];
+        }
     }
     
-    public static function editWalletById($id)
-    {
-        return $id;
-    }
+    // public static function editWalletById($id)
+    // {
+    //     return $id;
+    // }
 
     public static function updateWalletById($request, $id) 
     {
         $update_balance = self::find($id)->balance + $request->value;
-        return self::find($id)->update(['balance' => $update_balance]);
+
+        if ($update_balance) {
+            return self::find($id)->update(['balance' => $update_balance]);
+        } else {
+            return ['mensagem' => 'Carteira não encontrada!'];
+        }
 
     }
 
     public static function deleteWalletById($id) 
     {
-        return self::find($id)->delete();
+        $wallet = self::find($id);
+        if ($wallet) {
+            return self::find($id)->delete();
+        } else {
+            return ['mensagem' => 'Carteira não encontrada!'];
+        }
     }
 
     public static function rollBack($request)

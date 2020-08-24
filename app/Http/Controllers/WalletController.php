@@ -45,14 +45,14 @@ class WalletController extends Controller
          }
     }
 
-    public function edit($id)
-    {
-        try {
-            return response()->json(Wallet::editWalletById($id), Response::HTTP_OK); 
-         } catch (\Exception $ex) {
-            return json_encode(['erro' => 'Erro ao editar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
-         }
-    }
+    // public function edit($id)
+    // {
+    //     try {
+    //         return response()->json(Wallet::editWalletById($id), Response::HTTP_OK); 
+    //      } catch (\Exception $ex) {
+    //         return json_encode(['erro' => 'Erro ao editar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
+    //      }
+    // }
 
     public function update(Request $request, $id)
     {
