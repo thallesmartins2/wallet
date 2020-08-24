@@ -11,7 +11,7 @@ class WalletController extends Controller
     public function index()
     {
         try {
-            return response()->json(Wallet::getall().' chegou index', Response::HTTP_OK); 
+            return response()->json(Wallet::getall(), Response::HTTP_OK); 
          } catch (\Exception $ex) {
             return json_encode(['erro' => 'Erro ao listar todas as transações.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
          }
@@ -37,8 +37,9 @@ class WalletController extends Controller
 
     public function show($id)
     {
+        return response()->json(Wallet::getWalletById($id), Response::HTTP_OK); 
         try {
-            return response()->json(Wallet::getWalletById($id).' chegou show', Response::HTTP_OK); 
+            return response()->json(Wallet::getWalletById($id), Response::HTTP_OK); 
          } catch (\Exception $ex) {
             return json_encode(['erro' => 'Erro ao listar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
          }
@@ -47,7 +48,7 @@ class WalletController extends Controller
     public function edit($id)
     {
         try {
-            return response()->json(Wallet::editWalletById($id). 'chegou edit', Response::HTTP_OK); 
+            return response()->json(Wallet::editWalletById($id), Response::HTTP_OK); 
          } catch (\Exception $ex) {
             return json_encode(['erro' => 'Erro ao editar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
          }
@@ -69,5 +70,14 @@ class WalletController extends Controller
          } catch (\Exception $ex) {
             return json_encode(['erro' => 'Erro ao deletar transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
          }
+    }
+
+    public function rollBackWallet(Request $request)
+    {
+        try {
+            return response()->json(Wallet::rollBack($request), Response::HTTP_OK); 
+        } catch (\Throwable $th) {
+            return response()->json($th, Response::HTTP_NO_CONTENT);
+        }
     }
 }
