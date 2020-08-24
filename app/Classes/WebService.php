@@ -25,7 +25,7 @@ class WebService
             'Content-Type'  => 'application/x-www-form-urlencoded',
             'Authorization' => 'Bearer '.$token,
         ];
-       return self::conection('get', 'http://172.17.0.1:9000/api/validatoken', $header)->getStatusCode();
+       return self::conection('get', env('AUTENTICATION').'checktoken', $header)->getStatusCode();
     }
 
 }

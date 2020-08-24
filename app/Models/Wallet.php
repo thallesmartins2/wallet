@@ -44,11 +44,6 @@ class Wallet extends Model
             return ['mensagem' => 'Carteira não encontrada!'];
         }
     }
-    
-    // public static function editWalletById($id)
-    // {
-    //     return $id;
-    // }
 
     public static function updateWalletById($request, $id) 
     {
