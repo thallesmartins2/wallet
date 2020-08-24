@@ -17,15 +17,6 @@ class WalletController extends Controller
          }
     }
 
-    // public function create()
-    // {
-    //     try {
-    //         return response()->json(ConWallettrato::getAno(), Response::HTTP_OK); 
-    //      } catch (\Exception $ex) {
-    //         return json_encode(['erro' => 'Erro ao listar os anos por contrato.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
-    //      }
-    // }
-
     public function store(Request $request)
     {
         try {
@@ -44,15 +35,6 @@ class WalletController extends Controller
             return json_encode(['erro' => 'Erro ao listar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
          }
     }
-
-    // public function edit($id)
-    // {
-    //     try {
-    //         return response()->json(Wallet::editWalletById($id), Response::HTTP_OK); 
-    //      } catch (\Exception $ex) {
-    //         return json_encode(['erro' => 'Erro ao editar a transação.'.$ex->getMessage()], Response::HTTP_NO_CONTENT);
-    //      }
-    // }
 
     public function update(Request $request, $id)
     {
